@@ -4,7 +4,7 @@ su www-data <<EOSU
 
     echo "Downloading Sample Data"
     cd /tmp
-    wget https://codeload.github.com/magento/magento2-sample-data/tar.gz/${MAGENTO_VERSION} -O sample-data.tar.gz
+    wget --show-progress https://codeload.github.com/magento/magento2-sample-data/tar.gz/${MAGENTO_VERSION} -O sample-data.tar.gz
 
     tar -xf sample-data.tar.gz
 

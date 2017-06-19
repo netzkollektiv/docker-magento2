@@ -90,3 +90,7 @@ Not everybody needs it but it slows down your app.
 Enable it by running:
 `docker-php-ext-enable xdebug`
 Then adjust your config.
+
+### Thanks
+
+Though there is not much left: Thanks to Alex Cheng who provided the image we started with.

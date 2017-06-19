@@ -12,13 +12,14 @@ MYSQL_ALLOW_EMPTY_PASSWORD=yes
 #
 # Basic Magento Configuration (used when installing)
 #
+MAGENTO_DEPLOY_MODE=production
 MAGENTO_INSTALL_SAMPLE_DATA=yes
 MAGENTO_VERSION=2.1.3
-MAGENTO_LANGUAGE=en_US
+MAGENTO_LANGUAGE=de_DE
 MAGENTO_TIMEZONE=Europe/Berlin
 MAGENTO_DEFAULT_CURRENCY=EUR
 
-MAGENTO_URL=http://magento.local/
+MAGENTO_URL=http://docker02.netzkollektiv.com/
 MAGENTO_ADMIN_FIRSTNAME=Admin
 MAGENTO_ADMIN_LASTNAME=MyStore
 MAGENTO_ADMIN_EMAIL=amdin@example.com
@@ -39,3 +40,9 @@ LOCAL_GROUP=33
 # when running `install` or `init-project` 
 #
 REDIS_ENABLED=yes
+
+#
+# If you want to use grunt for frontend development, 
+# let the container install npm dependencies & init grunt for you
+#
+GRUNT_ENABLED=yes

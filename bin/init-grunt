@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+su www-data <<EOSU
+    cd $MAGEDIR
+
+    if [ ! -f package.json ]; then
+        cp package.json.sample package.json
+    fi
+
+    echo "installing npm deps"
+    npm install
+
+    if [ ! -f Gruntfile.js ]; then
+        cp Gruntfile.js.sample Gruntfile.js
+    fi
+
+    echo "initializing grunt"
+    grunt exec
+EOSU

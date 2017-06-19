@@ -7,3 +7,5 @@ init-baseurl
 
 cd $MAGEDIR
 composer install
+
+init-grunt

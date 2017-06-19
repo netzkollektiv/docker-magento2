@@ -6,22 +6,20 @@ services:
       - "80:80"
     links:
       - db
+      - redis
     env_file:
       - env
   db:
-    image: mysql:5.6.23
-    volumes_from:
-      - dbdata
+    image: mysql:5.7
     env_file:
       - env
-  dbdata:
-    image: alexcheng/data
-    volumes:
-      - /var/lib/mysql
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
+
+  redis:
+    image: redis
     ports:
-      - "8580:80"
-    links:
-      - db       
+      - 6379
+
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - "8055:8025"
