@@ -1,10 +1,6 @@
 #!/bin/bash
 
-redis='a:1:{s:8:"frontend";a:2:{s:7:"default";a:2:{s:7:"backend";s:22:"Cm_Cache_Backend_Redis";s:15:"backend_options";a:12:{s:6:"server";s:5:"redis";s:4:"port";s:4:"6379";s:10:"persistent";s:0:"";s:8:"database";s:1:
-"0";s:16:"force_standalone";s:1:"0";s:15:"connect_retries";s:1:"1";s:12:"read_timeout";s:2:"10";s:25:"automatic_cleaning_factor";s:1:"0";s:13:"compress_data";s:1:"1";s:13:"compress_tags";s:1:"1";s:18:"compress_thres
-hold";s:5:"20480";s:15:"compression_lib";s:4:"gzip";}}s:10:"page_cache";a:2:{s:7:"backend";s:22:"Cm_Cache_Backend_Redis";s:15:"backend_options";a:12:{s:6:"server";s:5:"redis";s:4:"port";s:4:"6379";s:10:"persistent";
-s:0:"";s:8:"database";s:1:"1";s:16:"force_standalone";s:1:"0";s:15:"connect_retries";s:1:"1";s:12:"read_timeout";s:2:"10";s:25:"automatic_cleaning_factor";s:1:"0";s:13:"compress_data";s:1:"0";s:13:"compress_tags";s:
-1:"1";s:18:"compress_threshold";s:5:"20480";s:15:"compression_lib";s:4:"gzip";}}}}'
+redis='a:1:{s:8:"frontend";a:2:{s:7:"default";a:2:{s:7:"backend";s:22:"Cm_Cache_Backend_Redis";s:15:"backend_options";a:12:{s:6:"server";s:5:"redis";s:4:"port";s:4:"6379";s:10:"persistent";s:0:"";s:8:"database";s:1:"0";s:16:"force_standalone";s:1:"0";s:15:"connect_retries";s:1:"1";s:12:"read_timeout";s:2:"10";s:25:"automatic_cleaning_factor";s:1:"0";s:13:"compress_data";s:1:"1";s:13:"compress_tags";s:1:"1";s:18:"compress_threshold";s:5:"20480";s:15:"compression_lib";s:4:"gzip";}}s:10:"page_cache";a:2:{s:7:"backend";s:22:"Cm_Cache_Backend_Redis";s:15:"backend_options";a:12:{s:6:"server";s:5:"redis";s:4:"port";s:4:"6379";s:10:"persistent";s:0:"";s:8:"database";s:1:"1";s:16:"force_standalone";s:1:"0";s:15:"connect_retries";s:1:"1";s:12:"read_timeout";s:2:"10";s:25:"automatic_cleaning_factor";s:1:"0";s:13:"compress_data";s:1:"0";s:13:"compress_tags";s:1:"1";s:18:"compress_threshold";s:5:"20480";s:15:"compression_lib";s:4:"gzip";}}}}'
 
 echo "adding redis configuration to app/etc/env.php"
 if [ -f app/etc/env.php ]; then
