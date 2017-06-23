@@ -21,9 +21,9 @@ su www-data <<EOSU
 
     cd $MAGEDIR
 
+    bin/magento setup:upgrade
     if [ -n $MAGENTO_DEPLOY_MODE ]; then
         bin/magento deploy:mode:set $MAGENTO_DEPLOY_MODE
     fi
-    bin/magento setup:upgrade
     bin/magento cache:flush
 EOSU

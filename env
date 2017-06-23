@@ -14,7 +14,7 @@ MYSQL_ALLOW_EMPTY_PASSWORD=yes
 #
 MAGENTO_DEPLOY_MODE=production
 MAGENTO_INSTALL_SAMPLE_DATA=yes
-MAGENTO_VERSION=2.1.3
+MAGENTO_VERSION=2.1.7
 MAGENTO_LANGUAGE=de_DE
 MAGENTO_TIMEZONE=Europe/Berlin
 MAGENTO_DEFAULT_CURRENCY=EUR
@@ -30,9 +30,10 @@ MAGENTO_ADMIN_PASSWORD=password123
 # If you have a mapped volume, you may want to map your
 # user id and group to the one used in the container in 
 # order to avoid permission problems
+# Please note, that you have to reload apache after installation (permission error!)
 #
-LOCAL_USER=2001
-LOCAL_GROUP=33
+#LOCAL_USER=2001
+#LOCAL_GROUP=33
 
 #
 # You really want to use redis - makes your development much faster! 
