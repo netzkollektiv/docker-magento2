@@ -12,7 +12,7 @@ RUN rm -rf /var/www/html/*
 
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
-RUN requirements="libpng12-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype6 libjpeg62-turbo libjpeg62-turbo-dev libpng12-dev libfreetype6-dev libicu-dev libxslt1-dev vim git wget colordiff curl rsync ssh mysql-client zip ssmtp cron" \
+RUN requirements="libpng12-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype6 libjpeg62-turbo libjpeg62-turbo-dev libpng12-dev libfreetype6-dev libicu-dev libxslt1-dev vim git wget colordiff curl rsync ssh mysql-client zip ssmtp cron netcat" \
     && apt-get update && apt-get install -y $requirements && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
