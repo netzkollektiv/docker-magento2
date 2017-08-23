@@ -51,3 +51,5 @@ VOLUME /var/www/html
 ADD crontab /etc/cron.d/magento2-cron
 RUN chmod 0644 /etc/cron.d/magento2-cron
 RUN crontab -u www-data /etc/cron.d/magento2-cron
+
+RUN mkdir /var/magento && git clone https://github.com/magento/magento2.git && git clone https://github.com/magento/magento2-sample-data.git

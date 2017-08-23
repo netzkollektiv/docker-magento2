@@ -2,14 +2,12 @@
 
 su www-data <<EOSU
 
-    echo "Downloading Sample Data"
-    cd /tmp
-    wget --show-progress https://codeload.github.com/magento/magento2-sample-data/tar.gz/${MAGENTO_VERSION} -O sample-data.tar.gz
+    echo "getting Magento Sample Data for $MAGENTO_VERSION from git repository"
+    cd /var/magento/magento2-sample-data
 
-    tar -xf sample-data.tar.gz
+    git fetch --all
+    git checkout $MAGENTO_VERSION
 
-    cp -r magento2-sample-data-*/* $MAGEDIR/
-
-    rm -f sample-data.tar.gz
+    cp -r * $MAGEDIR/
 
 EOSU
