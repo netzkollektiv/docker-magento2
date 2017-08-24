@@ -56,3 +56,4 @@ RUN mkdir /var/magento \
     && cd /var/magento \
     && git clone https://github.com/magento/magento2.git \
     && git clone https://github.com/magento/magento2-sample-data.git
+    && chown -R www-data: /var/magento
