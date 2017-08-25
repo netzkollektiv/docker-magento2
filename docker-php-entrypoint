@@ -6,7 +6,7 @@ if [ "${1#-}" != "$1" ]; then
     set -- apache2-foreground "$@"
 fi
 
-if [ ! -f /var/www/html/app/etc/env.php && -n $MAGENTO_AUTO_INSTALL ]; then
+if [ ! -f /var/www/html/app/etc/env.php ] && [ -n $MAGENTO_AUTO_INSTALL ]; then
     install
 fi
 
