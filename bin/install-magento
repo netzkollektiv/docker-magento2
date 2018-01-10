@@ -7,6 +7,8 @@ su www-data <<EOSU
     echo "install composer"
     composer install
 
+    chmod +x ./bin/magento
+
     echo "installing magento"
     bin/magento setup:install --base-url=$MAGENTO_URL --backend-frontname=admin --language=$MAGENTO_LANGUAGE --timezone=$MAGENTO_TIMEZONE --currency=$MAGENTO_DEFAULT_CURRENCY --db-host=$MYSQL_HOST --db-name=$MYSQL_DATABASE --db-user=$MYSQL_USER --db-password=$MYSQL_PASSWORD --use-secure=0 --base-url-secure=0 --use-secure-admin=0 --admin-firstname=$MAGENTO_ADMIN_FIRSTNAME --admin-lastname=$MAGENTO_ADMIN_LASTNAME --admin-email=$MAGENTO_ADMIN_EMAIL --admin-user=$MAGENTO_ADMIN_USERNAME --admin-password=$MAGENTO_ADMIN_PASSWORD
 

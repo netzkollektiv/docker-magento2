@@ -2,18 +2,17 @@
 
 download-magento
 
-if [ -n $MAGENTO_INSTALL_SAMPLE_DATA ]; then
+if [ "$MAGENTO_INSTALL_SAMPLE_DATA" == true ]; then
     download-sampledata
 fi
 
-set-permissions
 install-magento
 
-if [ -n $REDIS_ENABLED ]; then
+if [ "$REDIS_ENABLED" == true ]; then
     enable-redis
 fi
 
-if [ -n $GRUNT_ENABLED ]; then
+if [ "$GRUNT_ENABLED" == true ]; then
     init-grunt
 fi
 

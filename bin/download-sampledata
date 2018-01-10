@@ -1,13 +1,21 @@
 #!/usr/bin/env bash
 
+FILE=$MAGENTO_VERSION.tar.gz
+
 su www-data <<EOSU
 
-    echo "getting Magento Sample Data for $MAGENTO_VERSION from git repository"
-    cd /var/magento/magento2-sample-data
+    echo "getting Magento Sample Data for $MAGENTO_VERSION"
 
-    git fetch --all
-    git checkout $MAGENTO_VERSION
+    [ -d /tmp/magento ] || mkdir /tmp/magento
+    cd /tmp/magento
 
-    cp -r * $MAGEDIR/
+    if [ ! -f $FILE ]; then
+        wget https://github.com/magento/magento2-sample-data/archive/$FILE
+    fi
+
+    cd $MAGEDIR
+
+    echo "unpacking $FILE"
+    tar xzf /tmp/magento/$FILE
 
 EOSU

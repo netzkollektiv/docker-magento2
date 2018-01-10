@@ -68,6 +68,6 @@ su www-data <<EOSU
     EOF
 EOSU
 
-if [ -n $REDIS_ENABLED ]; then
+if [ "$REDIS_ENABLED" == true ]; then
     enable-redis
 fi

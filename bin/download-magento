@@ -1,14 +1,21 @@
 #!/usr/bin/env bash
 
+FILE="Magento-CE-$MAGENTO_VERSION.tar.gz"
+
 su www-data <<EOSU
 
-    echo "getting Magento $MAGENTO_VERSION from git repository"
-    cd /var/magento/magento2
+    echo "getting Magento $MAGENTO_VERSION"
 
-    git fetch --all
-    git checkout $MAGENTO_VERSION
+    [ -d /tmp/magento ] || mkdir /tmp/magento
+    cd /tmp/magento
 
-    cp -r * $MAGEDIR
-    cp .htaccess $MAGEDIR
+    if [ ! -f $FILE ]; then
+        magedownload.phar download --id $MAGE_ID --token $MAGE_TOKEN $FILE
+    fi
+
+    cd $MAGEDIR
+
+    echo "unpacking $FILE"
+    tar xzf /tmp/magento/$FILE
 
 EOSU

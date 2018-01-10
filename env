@@ -6,27 +6,35 @@ MYSQL_ROOT_PASSWORD=
 MYSQL_USER=magento
 MYSQL_PASSWORD=magento
 MYSQL_DATABASE=magento
-MYSQL_ALLOW_EMPTY_PASSWORD=yes
+MYSQL_ALLOW_EMPTY_PASSWORD=true
 
+#
+# Downloads Access Token
+# find your at https://account.magento.com/downloads/token/
+# My Account -> Magento -> Account Settings -> Downloads Access Token
+#
+
+MAGE_ID=
+MAGE_TOKEN=
 
 #
 # Basic Magento Configuration (used when installing)
 #
 MAGENTO_DEPLOY_MODE=production
-MAGENTO_INSTALL_SAMPLE_DATA=yes
+MAGENTO_INSTALL_SAMPLE_DATA=true
 MAGENTO_VERSION=2.1.8
 MAGENTO_LANGUAGE=de_DE
 MAGENTO_TIMEZONE=Europe/Berlin
 MAGENTO_DEFAULT_CURRENCY=EUR
 
-MAGENTO_URL=http://docker02.netzkollektiv.com/
+MAGENTO_URL=http://magento.local
 MAGENTO_ADMIN_FIRSTNAME=Admin
 MAGENTO_ADMIN_LASTNAME=MyStore
 MAGENTO_ADMIN_EMAIL=amdin@example.com
 MAGENTO_ADMIN_USERNAME=admin
 MAGENTO_ADMIN_PASSWORD=password123
 
-MAGENTO_AUTO_INSTALL=yes
+MAGENTO_AUTO_INSTALL=
 
 #
 # If you have a mapped volume, you may want to map your
@@ -42,10 +50,10 @@ MAGENTO_AUTO_INSTALL=yes
 # If this is enabled your config will be adjusted automatically 
 # when running `install` or `init-project` 
 #
-REDIS_ENABLED=yes
+REDIS_ENABLED=true
 
 #
 # If you want to use grunt for frontend development, 
 # let the container install npm dependencies & init grunt for you
 #
-GRUNT_ENABLED=yes
+GRUNT_ENABLED=true
