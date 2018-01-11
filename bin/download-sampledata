@@ -17,7 +17,7 @@ su www-data <<EOSU
 
     echo "unpacking $FILE"
     tar xzf /tmp/magento/$FILE
-    cp -r magento2-sample-data-$MAGENTO-VERSION/* .
-    rm -r magento2-sample-data-$MAGENTO-VERSION
+    cp -r magento2-sample-data-$MAGENTO_VERSION/* .
+    rm -r magento2-sample-data-$MAGENTO_VERSION
 
 EOSU
