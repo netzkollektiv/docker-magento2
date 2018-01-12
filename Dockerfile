@@ -4,7 +4,8 @@ MAINTAINER Dominik Krebs <dominik.krebs@netzkollektiv.com>
 
 COPY crontab /etc/cron.d/magento2-cron
 COPY ./auth.json /var/www/.composer/
-COPY ./etc/* /usr/local/etc/php/conf.d/
+COPY ./etc/php/* /usr/local/etc/php/conf.d/
+COPY ./etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf 
 COPY ./bin/* /usr/local/bin/
 COPY ./build.sh /tmp/
 
