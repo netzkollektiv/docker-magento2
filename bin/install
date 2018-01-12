@@ -6,6 +6,11 @@ if [ "$MAGENTO_INSTALL_SAMPLE_DATA" == true ]; then
     download-sampledata
 fi
 
+until echo '\q' | mysql -h $MYSQL_HOST -u $MYSQL_USER -p"$MYSQL_PASSWORD" $MYSQL_DATABASE; do
+    >&2 echo "MySQL is unavailable - sleeping"
+    sleep 1
+done
+
 install-magento
 
 if [ "$REDIS_ENABLED" == true ]; then

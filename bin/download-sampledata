@@ -10,7 +10,7 @@ su www-data <<EOSU
     cd /tmp/magento
 
     if [ ! -f $FILE ]; then
-        wget https://github.com/magento/magento2-sample-data/archive/$FILE
+        wget -q https://github.com/magento/magento2-sample-data/archive/$FILE
     fi
 
     cd $MAGEDIR
