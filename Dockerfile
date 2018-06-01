@@ -1,4 +1,4 @@
-FROM php:7.1-apache
+FROM php:7.0-apache
 
 MAINTAINER Dominik Krebs <dominik.krebs@netzkollektiv.com>
 
