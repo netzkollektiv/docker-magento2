@@ -2,11 +2,13 @@
 set -e
 
 phpextensions="pdo_mysql gd mcrypt mbstring zip intl xsl soap"
-buildDeps="libmcrypt-dev libcurl3-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-dev libicu-dev libxslt1-dev"
+buildDeps="libmcrypt-dev libcurl3-dev libpng-dev libfreetype6-dev libjpeg62-turbo-dev libicu-dev libxslt1-dev"
 requirements="libxslt1.1 libmcrypt4 libfreetype6 libjpeg62-turbo vim git wget colordiff curl rsync ssh mysql-client zip ssmtp cron netcat nodejs $buildDeps"
-
-curl -sL https://deb.nodesource.com/setup_6.x | bash -
 apt-get update
+
+apt-get install -y gnupg
+curl -sL https://deb.nodesource.com/setup_6.x | bash -
+
 apt-get install --no-install-recommends -y $requirements && rm -rf /var/lib/apt/lists/*
 
 
