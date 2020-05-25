@@ -1,0 +1,44 @@
+MAGENTO_COMMAND="magento-command"
+
+if [ ! "$M2SETUP_INSTALL_DB" = "false" ]; then
+
+    apt-get install -y mariadb-server
+    /usr/bin/mysqld_safe &
+    sleep 5
+    mysql -u root -e "
+        CREATE DATABASE $M2SETUP_DB_NAME;
+        CREATE USER '$M2SETUP_DB_USER'@'$M2SETUP_DB_HOST' IDENTIFIED BY '$M2SETUP_DB_PASSWORD';
+        GRANT ALL PRIVILEGES ON *.* TO '$M2SETUP_DB_USER'@'$M2SETUP_DB_HOST';
+    "
+
+    echo "Install Magento"
+
+    INSTALL_COMMAND="$MAGENTO_COMMAND setup:install \
+        --db-host=$M2SETUP_DB_HOST \
+        --db-name=$M2SETUP_DB_NAME \
+        --db-user=$M2SETUP_DB_USER \
+        --db-password=$M2SETUP_DB_PASSWORD \
+        --base-url=$M2SETUP_BASE_URL \
+        --admin-firstname=$M2SETUP_ADMIN_FIRSTNAME \
+        --admin-lastname=$M2SETUP_ADMIN_LASTNAME \
+        --admin-email=$M2SETUP_ADMIN_EMAIL \
+        --admin-user=$M2SETUP_ADMIN_USER \
+        --admin-password=$M2SETUP_ADMIN_PASSWORD"
+
+    # Use a separate value for secure base URL, if the variable is set
+    if [ -n "$M2SETUP_SECURE_BASE_URL" ]; then
+        INSTALL_COMMAND="$INSTALL_COMMAND --base-url-secure=$M2SETUP_SECURE_BASE_URL"
+    fi
+
+    # Only define a backend-frontname if the variable is set, or not empty.
+    if [ -n "$M2SETUP_BACKEND_FRONTNAME" ]; then
+        INSTALL_COMMAND="$INSTALL_COMMAND --backend-frontname=$M2SETUP_BACKEND_FRONTNAME"
+    fi
+    $INSTALL_COMMAND
+
+    echo "saving database to /dump.sql"
+    mysqldump magento2 > /dump.sql
+
+else
+    echo "Skipping DB installation"
+fi

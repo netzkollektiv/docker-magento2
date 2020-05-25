@@ -1,0 +1,5 @@
+docker build \
+	--build-arg COMPOSER_MAGENTO_USERNAME=a2a9f5105c5560ae86079ac3dd8e6131 \
+    --build-arg COMPOSER_MAGENTO_PASSWORD=72f2e171b0a173f03875b9c1851e5c6d \
+    --build-arg COMPOSER_GITHUB_TOKEN=  \
+	.

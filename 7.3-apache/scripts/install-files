@@ -1,0 +1,21 @@
+set -e
+
+# Configure composer
+[ ! -z "${COMPOSER_GITHUB_TOKEN}" ] && \
+    composer config --global github-oauth.github.com $COMPOSER_GITHUB_TOKEN
+
+[ ! -z "${COMPOSER_MAGENTO_USERNAME}" ] && \
+    composer config --global http-basic.repo.magento.com \
+        $COMPOSER_MAGENTO_USERNAME $COMPOSER_MAGENTO_PASSWORD
+
+composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=$M2SETUP_VERSION \
+    --no-interaction \
+    --no-install \
+    $MAGENTO_ROOT
+
+composer --working-dir=$MAGENTO_ROOT require \
+   magento/module-sample-data \
+   --no-interaction \
+   --no-update
+composer --working-dir=$MAGENTO_ROOT update
+chown -R www-data:www-data $MAGENTO_ROOT
