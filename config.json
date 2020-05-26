@@ -36,7 +36,7 @@
         "executable": true
       },
       "etc/mail.ini": {},
-      "etc/php-cli.ini": {},
+      "etc/php-apache.ini": {},
       "etc/php-xdebug.ini": {}
     },
     "phpExtensions": [],
