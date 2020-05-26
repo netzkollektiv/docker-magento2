@@ -16,9 +16,9 @@ build:
   script:
     - docker pull $CI_REGISTRY_IMAGE:latest || true
     - docker build --cache-from $CI_REGISTRY_IMAGE:latest \
-          --build-arg COMPOSER_MAGENTO_USERNAME=$(COMPOSER_MAGENTO_USERNAME) \
-          --build-arg COMPOSER_MAGENTO_PASSWORD=$(COMPOSER_MAGENTO_PASSWORD) \
-          --build-arg COMPOSER_GITHUB_TOKEN=$(COMPOSER_GITHUB_TOKEN) \
+          --build-arg COMPOSER_MAGENTO_USERNAME=$COMPOSER_MAGENTO_USERNAM) \
+          --build-arg COMPOSER_MAGENTO_PASSWORD=$COMPOSER_MAGENTO_PASSWORD \
+          --build-arg COMPOSER_GITHUB_TOKEN=$COMPOSER_GITHUB_TOKEN \
           --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA \
           --tag $CI_REGISTRY_IMAGE:latest \
           .
