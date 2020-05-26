@@ -76,7 +76,9 @@ RUN ["chmod", "+x", "/usr/local/bin/magerun2"]
 RUN ["chmod", "+x", "/usr/local/bin/run-cron"]
 
 # Installing cypress
-#RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install -y nodejs && npm install cypress
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install -y nodejs && npm install --prefix /usr/local/ cypress
+
+ADD etc/php-apache.ini /usr/local/etc/php/conf.d/zz-magento.ini
 
 ARG COMPOSER_MAGENTO_USERNAME
 ARG COMPOSER_MAGENTO_PASSWORD
