@@ -29,10 +29,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "scripts/install-files": {
-        "executable": true
-      },
-      "scripts/install-magento": {
+      "bin/pre-install": {
         "executable": true
       },
       "etc/mail.ini": {},

@@ -8,15 +8,13 @@ MAINTAINER Nick Jones <nick@nicksays.co.uk>
 
 # Install dependencies
 RUN apt-get update \
-  && apt-get install -y \
+  && apt-get install --no-install-recommends -y \
     libfreetype6-dev \ 
     libicu-dev \ 
     libjpeg62-turbo-dev \ 
     libmcrypt-dev \ 
     libpng-dev \ 
     libxslt1-dev \ 
-    sendmail-bin \ 
-    sendmail \ 
     sudo \ 
     libzip-dev
 
@@ -61,6 +59,8 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 ENV MAGENTO_RUN_MODE production
 ENV MAGENTO_ROOT /var/www/html
 
+RUN a2enmod rewrite
+
 # Get composer installed to /usr/local/bin/composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
@@ -70,10 +70,7 @@ RUN curl -O https://files.magerun.net/n98-magerun2.phar && chmod +x ./n98-mageru
 RUN apt-get install -y unzip vim && composer global require hirak/prestissimo
 
 ADD bin/* /usr/local/bin/
-RUN ["chmod", "+x", "/usr/local/bin/magento-installer"]
-RUN ["chmod", "+x", "/usr/local/bin/magento-command"]
-RUN ["chmod", "+x", "/usr/local/bin/magerun2"]
-RUN ["chmod", "+x", "/usr/local/bin/run-cron"]
+RUN ["chmod", "+x", "/usr/local/bin/magento-installer", "/usr/local/bin/magento-command", "/usr/local/bin/magerun2", "/usr/local/bin/run-cron", "/usr/local/bin/pre-install"] 
 
 # Installing cypress
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
@@ -103,10 +100,6 @@ ENV M2SETUP_DB_HOST=127.0.0.1 \
     M2SETUP_USE_SAMPLE_DATA=true
     # - M2SETUP_SECURE_BASE_URL=https://magento2.docker/ \
 
-COPY scripts/install-files /scripts/
-RUN /scripts/install-files
-
-COPY scripts/install-magento /scripts/
-RUN /scripts/install-magento
+RUN pre-install
 
 CMD ["apache2-foreground"]

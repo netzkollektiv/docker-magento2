@@ -1,0 +1,24 @@
+apt-get install -y mariadb-server
+/usr/bin/mysqld_safe &
+sleep 5
+mysql -u root -e "
+	CREATE DATABASE $M2SETUP_DB_NAME;
+	CREATE USER '$M2SETUP_DB_USER'@'$M2SETUP_DB_HOST' IDENTIFIED BY '$M2SETUP_DB_PASSWORD';
+	GRANT ALL PRIVILEGES ON *.* TO '$M2SETUP_DB_USER'@'$M2SETUP_DB_HOST';
+"
+
+# Configure composer
+[ ! -z "${COMPOSER_GITHUB_TOKEN}" ] && \
+    composer config --global github-oauth.github.com $COMPOSER_GITHUB_TOKEN
+
+[ ! -z "${COMPOSER_MAGENTO_USERNAME}" ] && \
+    composer config --global http-basic.repo.magento.com \
+        $COMPOSER_MAGENTO_USERNAME $COMPOSER_MAGENTO_PASSWORD
+
+magento-installer
+
+echo "saving database to /dump.sql"
+mysqldump $M2SETUP_DB_NAME > /dump.sql
+gzip /dump.sql
+apt-get remove -y --purge mariadb-server && apt-get autoremove
+[ -d /var/lib/mysql ] && rm -rf /var/lib/mysql

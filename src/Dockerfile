@@ -23,15 +23,13 @@ MAINTAINER Nick Jones <nick@nicksays.co.uk>
         'libmcrypt-dev',
         'libpng-dev',
         'libxslt1-dev',
-        'sendmail-bin',
-        'sendmail',
         'sudo'
     ], $imageSpecificPackages ?? [], $versionSpecificPackages ?? []);
 ?>
 
 # Install dependencies
 RUN apt-get update \
-  && apt-get install -y \
+  && apt-get install --no-install-recommends -y \
     <?php echo join(" \\ \n    ", $packages) ?>
 
 
