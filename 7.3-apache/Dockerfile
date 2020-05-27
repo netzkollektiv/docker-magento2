@@ -67,7 +67,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install n98-magerun2.phar and move to /usr/local/bin/
 RUN curl -O https://files.magerun.net/n98-magerun2.phar && chmod +x ./n98-magerun2.phar && mv ./n98-magerun2.phar /usr/local/bin/
 
-RUN apt-get install unzip && composer global require hirak/prestissimo
+RUN apt-get install unzip vim && composer global require hirak/prestissimo
 
 ADD bin/* /usr/local/bin/
 RUN ["chmod", "+x", "/usr/local/bin/magento-installer"]
@@ -93,7 +93,7 @@ ENV M2SETUP_DB_HOST=127.0.0.1 \
     M2SETUP_DB_NAME=magento2 \
     M2SETUP_DB_USER=magento2 \
     M2SETUP_DB_PASSWORD=magento2 \
-    M2SETUP_BASE_URL=http://magento2.docker/ \
+    M2SETUP_BASE_URL=http://127.0.0.1/ \
     M2SETUP_BACKEND_FRONTNAME=admin \
     M2SETUP_ADMIN_FIRSTNAME=Admin \
     M2SETUP_ADMIN_LASTNAME=User \
