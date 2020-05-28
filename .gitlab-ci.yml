@@ -26,6 +26,16 @@ before_script:
   tags:
     - docker
 
+build:2.1.18:
+  <<: *build_definition
+  variables:
+    M2SETUP_VERSION: 2.2.18
+
+build:2.2.11:
+  <<: *build_definition
+  variables:
+    M2SETUP_VERSION: 2.2.11
+
 build:2.3.4:
   <<: *build_definition
   variables:
