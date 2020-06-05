@@ -29,7 +29,7 @@ before_script:
 build:2.1.18:
   <<: *build_definition
   variables:
-    M2SETUP_VERSION: 2.2.18
+    M2SETUP_VERSION: 2.1.18
 
 build:2.2.11:
   <<: *build_definition
