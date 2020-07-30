@@ -45,3 +45,9 @@ build:2.3.5:
   <<: *build_definition
   variables:
     M2SETUP_VERSION: 2.3.5p1
+
+build:2.4.0:
+  <<: *build_definition
+  variables:
+    M2SETUP_VERSION: 2.4.0
+
