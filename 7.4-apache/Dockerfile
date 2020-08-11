@@ -88,7 +88,7 @@ ADD etc/php-apache.ini /usr/local/etc/php/conf.d/zz-magento.ini
 ARG COMPOSER_MAGENTO_USERNAME
 ARG COMPOSER_MAGENTO_PASSWORD
 ARG COMPOSER_GITHUB_TOKEN
-ARG M2SETUP_VERSION=2.3.5-p1
+ARG M2SETUP_VERSION
 
 ENV M2SETUP_DB_HOST=127.0.0.1 \
     M2SETUP_INSTALL_DB=true \
@@ -106,6 +106,6 @@ ENV M2SETUP_DB_HOST=127.0.0.1 \
     M2SETUP_USE_SAMPLE_DATA=true
     # - M2SETUP_SECURE_BASE_URL=https://magento2.docker/ \
 
-RUN [ "pre-install", "$M2SETUP_VERSION" ]
+RUN [ "pre-install" ]
 
 CMD ["apache2-foreground"]
