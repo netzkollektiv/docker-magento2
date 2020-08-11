@@ -31,27 +31,27 @@ build:2.1.18:
     M2SETUP_VERSION: 2.1.18
     M2_BASE_IMAGE: 7.0-apache
 
-build:2.2.11:
-  <<: *build_definition
-  variables:
-    M2SETUP_VERSION: 2.2.11
-    M2_BASE_IMAGE: 7.1-apache
+#build:2.2.11:
+#  <<: *build_definition
+#  variables:
+#    M2SETUP_VERSION: 2.2.11
+#    M2_BASE_IMAGE: 7.1-apache
 
-build:2.3.4:
-  <<: *build_definition
-  variables:
-    M2SETUP_VERSION: 2.3.4
-    M2_BASE_IMAGE: 7.3-apache
+#build:2.3.4:
+#  <<: *build_definition
+#  variables:
+#    M2SETUP_VERSION: 2.3.4
+#    M2_BASE_IMAGE: 7.3-apache
 
-build:2.3.5:
-  <<: *build_definition
-  variables:
-    M2SETUP_VERSION: 2.3.5p1
-    M2_BASE_IMAGE: 7.3-apache
+#build:2.3.5:
+#  <<: *build_definition
+#  variables:
+#    M2SETUP_VERSION: 2.3.5p1
+#    M2_BASE_IMAGE: 7.3-apache
 
-build:2.4.0:
-  <<: *build_definition
-  variables:
-    M2SETUP_VERSION: 2.4.0
-    M2_BASE_IMAGE: 7.4-apache
+#build:2.4.0:
+#  <<: *build_definition
+#  variables:
+#    M2SETUP_VERSION: 2.4.0
+#    M2_BASE_IMAGE: 7.4-apache
 

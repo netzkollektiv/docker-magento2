@@ -105,7 +105,7 @@ ENV M2SETUP_DB_HOST=127.0.0.1 \
     M2SETUP_ADMIN_PASSWORD=password123 \
     M2SETUP_USE_SAMPLE_DATA=true
     # - M2SETUP_SECURE_BASE_URL=https://magento2.docker/ \
-RUN [ "sleep", "600" ]
+RUN [ "ls", "-lia", "/usr/local/bin" ]
 RUN [ "pre-install" ]
 
 CMD ["apache2-foreground"]
