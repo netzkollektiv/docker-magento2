@@ -1,6 +1,126 @@
 {
+  "7.0-apache": {
+    "version": "7.0",
+    "flavour": "apache",
+    "files": {
+      "Dockerfile": {},
+      "docker-entrypoint.sh": {
+        "executable": true
+      },
+      "bin/mageconfigsync": {
+        "executable": true
+      },
+      "bin/magedbm2": {
+        "executable": true
+      },
+      "bin/magento-command": {
+        "executable": true
+      },
+      "bin/magento-extension-installer": {
+        "_disable_variables": true,
+        "executable": true
+      },
+      "bin/magento-installer": {
+        "executable": true
+      },
+      "bin/magerun2": {
+        "executable": true
+      },
+      "bin/run-cron": {
+        "executable": true
+      },
+      "bin/pre-install": {
+        "executable": true
+      },
+      "etc/mail.ini": {},
+      "etc/php-apache.ini": {},
+      "etc/php-xdebug.ini": {}
+    },
+    "phpExtensions": [],
+    "xdebugVersion": "latest"
+  },
+  "7.1-apache": {
+    "version": "7.1",
+    "flavour": "apache",
+    "files": {
+      "Dockerfile": {},
+      "docker-entrypoint.sh": {
+        "executable": true
+      },
+      "bin/mageconfigsync": {
+        "executable": true
+      },
+      "bin/magedbm2": {
+        "executable": true
+      },
+      "bin/magento-command": {
+        "executable": true
+      },
+      "bin/magento-extension-installer": {
+        "_disable_variables": true,
+        "executable": true
+      },
+      "bin/magento-installer": {
+        "executable": true
+      },
+      "bin/magerun2": {
+        "executable": true
+      },
+      "bin/run-cron": {
+        "executable": true
+      },
+      "bin/pre-install": {
+        "executable": true
+      },
+      "etc/mail.ini": {},
+      "etc/php-apache.ini": {},
+      "etc/php-xdebug.ini": {}
+    },
+    "phpExtensions": [],
+    "xdebugVersion": "latest"
+  },
   "7.3-apache": {
     "version": "7.3",
+    "flavour": "apache",
+    "files": {
+      "Dockerfile": {},
+      "docker-entrypoint.sh": {
+        "executable": true
+      },
+      "bin/mageconfigsync": {
+        "executable": true
+      },
+      "bin/magedbm2": {
+        "executable": true
+      },
+      "bin/magento-command": {
+        "executable": true
+      },
+      "bin/magento-extension-installer": {
+        "_disable_variables": true,
+        "executable": true
+      },
+      "bin/magento-installer": {
+        "executable": true
+      },
+      "bin/magerun2": {
+        "executable": true
+      },
+      "bin/run-cron": {
+        "executable": true
+      },
+      "bin/pre-install": {
+        "executable": true
+      },
+      "etc/mail.ini": {},
+      "etc/php-apache.ini": {},
+      "etc/php-xdebug.ini": {}
+    },
+    "phpExtensions": [],
+    "xdebugVersion": "latest"
+  },
+  "7.4-apache": {
+    "version": "7.4",
     "flavour": "apache",
     "files": {
       "Dockerfile": {},

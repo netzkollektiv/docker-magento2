@@ -30,8 +30,8 @@ MAINTAINER Nick Jones <nick@nicksays.co.uk>
 # Install dependencies
 RUN apt-get update \
   && apt-get install --no-install-recommends -y \
-    <?php echo join(" \\ \n    ", $packages) ?>
-
+    <?php echo join(" \\ \n    ", $packages) ?> \
+  && rm -rf /var/lib/apt/lists/*
 
 # Configure the gd library
 <?php if (version_compare($version, '7.3', '<=')): ?>
