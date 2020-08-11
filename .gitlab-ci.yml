@@ -19,13 +19,21 @@ before_script:
   stage: build
   script:
     #- docker pull $CI_REGISTRY_IMAGE:$M2SETUP_VERSION || true
+  
+    - echo "docker build
+        --build-arg COMPOSER_MAGENTO_USERNAME=$COMPOSER_MAGENTO_USERNAME
+        --build-arg COMPOSER_MAGENTO_PASSWORD=$COMPOSER_MAGENTO_PASSWORD
+        --build-arg COMPOSER_GITHUB_TOKEN=$COMPOSER_GITHUB_TOKEN
+        --build-arg M2SETUP_VERSION=$M2SETUP_VERSION
+        --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+        --tag $CI_REGISTRY_IMAGE:$M2SETUP_VE/RSION $BASE_IMAGE"
     - docker build \
         --build-arg COMPOSER_MAGENTO_USERNAME=$COMPOSER_MAGENTO_USERNAME \
         --build-arg COMPOSER_MAGENTO_PASSWORD=$COMPOSER_MAGENTO_PASSWORD \
         --build-arg COMPOSER_GITHUB_TOKEN=$COMPOSER_GITHUB_TOKEN \
         --build-arg M2SETUP_VERSION=$M2SETUP_VERSION \
         --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA \
-        --tag $CI_REGISTRY_IMAGE:$M2SETUP_VERSION $M2BASE_IMAGE
+        --tag $CI_REGISTRY_IMAGE:$M2SETUP_VE/RSION $BASE_IMAGE
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     - docker push $CI_REGISTRY_IMAGE:$M2SETUP_VERSION
   tags:
@@ -35,29 +43,29 @@ build:2.1.18:
   <<: *build_definition
   variables:
     M2SETUP_VERSION: 2.1.18
-    M2BASE_IMAGE: 7.0-apache
+    BASE_IMAGE: 7.0-apache
 
 build:2.2.11:
   <<: *build_definition
   variables:
     M2SETUP_VERSION: 2.2.11
-    M2BASE_IMAGE: 7.1-apache
+    BASE_IMAGE: 7.1-apache
 
 build:2.3.4:
   <<: *build_definition
   variables:
     M2SETUP_VERSION: 2.3.4
-    M2BASE_IMAGE: 7.3-apache
+    BASE_IMAGE: 7.3-apache
 
 build:2.3.5:
   <<: *build_definition
   variables:
     M2SETUP_VERSION: 2.3.5p1
-    M2BASE_IMAGE: 7.3-apache
+    BASE_IMAGE: 7.3-apache
 
 build:2.4.0:
   <<: *build_definition
   variables:
     M2SETUP_VERSION: 2.4.0
-    M2BASE_IMAGE: 7.4-apache
+    BASE_IMAGE: 7.4-apache
 
