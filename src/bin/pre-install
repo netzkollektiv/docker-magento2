@@ -1,8 +1,15 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 /usr/bin/mysqld_safe &
-sleep 5
+
+# wait for mysql
+until mysql -u root &> /dev/null
+do
+  printf "."
+  sleep 1
+done
+
 mysql -u root -e "
 	CREATE DATABASE $M2SETUP_DB_NAME;
 	CREATE USER '$M2SETUP_DB_USER'@'$M2SETUP_DB_HOST' IDENTIFIED BY '$M2SETUP_DB_PASSWORD';
