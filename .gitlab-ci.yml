@@ -1,7 +1,7 @@
 image: docker
 
-#services:
-#  - docker:dind
+services:
+  - docker:dind
 
 variables:
   DOCKER_DRIVER: overlay2
