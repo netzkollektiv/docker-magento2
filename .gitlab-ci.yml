@@ -10,6 +10,7 @@ variables:
 cache:
   paths:
     - /root/.cache
+    - /var/lib/docker/containers
 
 before_script:
   - env
