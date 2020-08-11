@@ -36,8 +36,8 @@
       "etc/php-apache.ini": {},
       "etc/php-xdebug.ini": {}
     },
-    "phpExtensions": [],
-    "xdebugVersion": "latest"
+    "phpExtensions": [ "mcrypt" ],
+	"xdebugVersion": "2.8.1"
   },
   "7.1-apache": {
     "version": "7.1",
@@ -76,7 +76,7 @@
       "etc/php-apache.ini": {},
       "etc/php-xdebug.ini": {}
     },
-    "phpExtensions": [],
+    "phpExtensions": [ "mcrypt" ],
     "xdebugVersion": "latest"
   },
   "7.3-apache": {
