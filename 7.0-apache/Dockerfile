@@ -72,11 +72,12 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends unzip vim \
   && composer global require hirak/prestissimo \
   && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
-  && apt-get install -y --no-install-recommends nodejs libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb mariadb-server \
+  && apt-get install -y --no-install-recommends nodejs libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb \
   && apt-get autoremove -y \ 
   && rm -rf /var/lib/apt/lists/* \
   && npm install --prefix /usr/local/ cypress
 
+ADD share/* /usr/local/share/
 ADD bin/* /usr/local/bin/
 RUN ["chmod", "+x", "/usr/local/bin/magento-installer", "/usr/local/bin/magento-command", "/usr/local/bin/magerun2", "/usr/local/bin/run-cron", "/usr/local/bin/pre-install"] 
 

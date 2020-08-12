@@ -154,7 +154,8 @@
       },
       "etc/mail.ini": {},
       "etc/php-apache.ini": {},
-      "etc/php-xdebug.ini": {}
+      "etc/php-xdebug.ini": {},
+      "share/ElasticSetupValidator.patch" : {}
     },
     "phpExtensions": [],
     "xdebugVersion": "latest"

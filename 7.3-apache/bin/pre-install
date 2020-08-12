@@ -1,20 +1,6 @@
 #!/bin/bash
-set -e
 
-/usr/bin/mysqld_safe &
-
-# wait for mysql
-until mysql -u root &> /dev/null
-do
-  printf "."
-  sleep 1
-done
-
-mysql -u root -e "
-	CREATE DATABASE $M2SETUP_DB_NAME;
-	CREATE USER '$M2SETUP_DB_USER'@'$M2SETUP_DB_HOST' IDENTIFIED BY '$M2SETUP_DB_PASSWORD';
-	GRANT ALL PRIVILEGES ON *.* TO '$M2SETUP_DB_USER'@'$M2SETUP_DB_HOST';
-"
+[ "$DEBUG" = "true" ] && set -x
 
 # Configure composer
 [ ! -z "${COMPOSER_GITHUB_TOKEN}" ] && \
@@ -24,12 +10,40 @@ mysql -u root -e "
     composer config --global http-basic.repo.magento.com \
         $COMPOSER_MAGENTO_USERNAME $COMPOSER_MAGENTO_PASSWORD
 
-#composer require community-engineering/language-de_de --no-update
-#composer install 
-magento-installer
+AUTH_JSON_FILE="$(composer -g config data-dir 2>/dev/null)/auth.json"
 
-echo "saving database to /dump.sql"
-mysqldump $M2SETUP_DB_NAME > /dump.sql
-gzip /dump.sql
+if [ -f "$AUTH_JSON_FILE" ]; then
+    # Get composer auth information into an environment variable to avoid "you need
+    # to be using an interactive terminal to authenticate".
+    COMPOSER_AUTH=`cat $AUTH_JSON_FILE`
+fi
 
-[ -d /var/lib/mysql ] && rm -rf /var/lib/mysql
+MAGENTO_COMMAND="magento-command"
+
+if [ ! -f "$MAGENTO_ROOT/composer.json" ]; then
+    echo "Creating Magento ($M2SETUP_VERSION) project from composer"
+
+    composer create-project \
+        --repository-url=https://repo.magento.com/ \
+        magento/project-community-edition=$M2SETUP_VERSION \
+        --no-interaction \
+        $MAGENTO_ROOT
+
+    # Magento forces Composer to use $MAGENTO_ROOT/var/composer_home as the home directory
+    # when running any Composer commands through Magento, e.g. sampledata:deploy, so copy the
+    # credentials over to it to prevent Composer from asking for them again
+    if [ -f "$AUTH_JSON_FILE" ]; then
+        mkdir -p $MAGENTO_ROOT/var/composer_home
+        cp $AUTH_JSON_FILE $MAGENTO_ROOT/var/composer_home/auth.json
+    fi
+
+    composer require community-engineering/language-de_de --no-update
+
+    if [ "$M2SETUP_USE_SAMPLE_DATA" = "true" ]; then
+        $MAGENTO_COMMAND sampledata:deploy
+    fi
+
+	composer --working-dir=$MAGENTO_ROOT update
+fi
+
+chown -R www-data:www-data $MAGENTO_ROOT
