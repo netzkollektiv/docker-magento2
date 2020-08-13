@@ -78,7 +78,7 @@ RUN apt-get update \
   && npm install --prefix /usr/local/ cypress
 
 ADD bin/* /usr/local/bin/
-RUN ["chmod", "+x", "/usr/local/bin/magento-installer", "/usr/local/bin/magento-command", "/usr/local/bin/magerun2", "/usr/local/bin/run-cron", "/usr/local/bin/pre-install"] 
+RUN ["chmod", "+x", "/usr/local/bin/magento-installer", "/usr/local/bin/magento-command", "/usr/local/bin/magerun2", "/usr/local/bin/run-cron", "/usr/local/bin/install"] 
 
 ADD etc/php-apache.ini /usr/local/etc/php/conf.d/zz-magento.ini
 
@@ -103,6 +103,6 @@ ENV M2SETUP_DB_HOST=127.0.0.1 \
     M2SETUP_USE_SAMPLE_DATA=true
     # - M2SETUP_SECURE_BASE_URL=https://magento2.docker/ \
 
-RUN [ "pre-install" ]
+RUN [ "install" ]
 
 CMD ["apache2-foreground"]
