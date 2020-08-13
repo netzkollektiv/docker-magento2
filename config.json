@@ -29,7 +29,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/pre-install": {
+      "bin/install": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -69,7 +69,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/pre-install": {
+      "bin/install": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -109,7 +109,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/pre-install": {
+      "bin/install": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -149,7 +149,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/pre-install": {
+      "bin/install": {
         "executable": true
       },
       "etc/mail.ini": {},
