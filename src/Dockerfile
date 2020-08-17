@@ -17,21 +17,40 @@ MAINTAINER Nick Jones <nick@nicksays.co.uk>
     }
 
     $packages = array_merge([
-        'libfreetype6-dev',
+		'libfreetype6-dev',
         'libicu-dev',
         'libjpeg62-turbo-dev',
         'libmcrypt-dev',
         'libpng-dev',
         'libxslt1-dev',
-        'sudo'
+        'libxml2-dev',
+        'libssl-dev',
+        'sudo',
+        'unzip',
+        'vim',
+        'libgtk2.0-0',
+        'libgtk-3-0',
+        'libnotify-dev',
+        'libgconf-2-4',
+        'libnss3',
+        'libxss1',
+        'libasound2',
+        'libxtst6',
+        'xauth',
+        'xvfb',
+        'nodejs',
+        'git',
+        'default-mysql-client'
     ], $imageSpecificPackages ?? [], $versionSpecificPackages ?? []);
 ?>
 
 # Install dependencies
 RUN apt-get update \
+  && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
   && apt-get install --no-install-recommends -y \
     <?php echo join(" \\ \n    ", $packages) ?> \
-  && rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/* \
+  && npm install --prefix /usr/local/ cypress
 
 # Configure the gd library
 <?php if (version_compare($version, '7.3', '<=')): ?>

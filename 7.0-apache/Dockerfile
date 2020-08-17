@@ -8,6 +8,7 @@ MAINTAINER Nick Jones <nick@nicksays.co.uk>
 
 # Install dependencies
 RUN apt-get update \
+  && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
   && apt-get install --no-install-recommends -y \
     libfreetype6-dev \ 
     libicu-dev \ 
@@ -15,8 +16,26 @@ RUN apt-get update \
     libmcrypt-dev \ 
     libpng-dev \ 
     libxslt1-dev \ 
-    sudo \
-  && rm -rf /var/lib/apt/lists/*
+    libxml2-dev \ 
+    libssl-dev \ 
+    sudo \ 
+    unzip \ 
+    vim \ 
+    libgtk2.0-0 \ 
+    libgtk-3-0 \ 
+    libnotify-dev \ 
+    libgconf-2-4 \ 
+    libnss3 \ 
+    libxss1 \ 
+    libasound2 \ 
+    libxtst6 \ 
+    xauth \ 
+    xvfb \ 
+    nodejs \ 
+    git \ 
+    default-mysql-client \
+  && rm -rf /var/lib/apt/lists/* \
+  && npm install --prefix /usr/local/ cypress
 
 # Configure the gd library
 RUN docker-php-ext-configure \
@@ -68,14 +87,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install n98-magerun2.phar and move to /usr/local/bin/
 RUN curl -O https://files.magerun.net/n98-magerun2.phar && chmod +x ./n98-magerun2.phar && mv ./n98-magerun2.phar /usr/local/bin/
 
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends unzip vim \
-  && composer global require hirak/prestissimo \
-  && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
-  && apt-get install -y --no-install-recommends nodejs libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb \
-  && apt-get autoremove -y \ 
-  && rm -rf /var/lib/apt/lists/* \
-  && npm install --prefix /usr/local/ cypress
+RUN composer global require hirak/prestissimo
 
 ADD bin/* /usr/local/bin/
 RUN ["chmod", "+x", "/usr/local/bin/magento-installer", "/usr/local/bin/magento-command", "/usr/local/bin/magerun2", "/usr/local/bin/run-cron", "/usr/local/bin/install"] 
