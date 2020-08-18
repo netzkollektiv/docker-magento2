@@ -33,7 +33,7 @@ if [ ! "$M2SETUP_INSTALL_DB" = "false" ]; then
         INSTALL_COMMAND="$INSTALL_COMMAND --base-url-secure=$M2SETUP_SECURE_BASE_URL"
     fi
 
-    if [ -n $M2SETUP_ELASTICSEARCH_HOST ]; then
+    if [ -n "$M2SETUP_ELASTICSEARCH_HOST" ]; then
         INSTALL_COMMAND="$INSTALL_COMMAND --elasticsearch-host $M2SETUP_ELASTICSEARCH_HOST"
     fi
 
