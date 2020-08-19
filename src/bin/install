@@ -34,6 +34,8 @@ if [ ! -f "$MAGENTO_ROOT/composer.json" ]; then
         --no-interaction \
         $MAGENTO_ROOT
 
+    chmod +x $MAGENTO_COMMAND
+
     # Magento forces Composer to use $MAGENTO_ROOT/var/composer_home as the home directory
     # when running any Composer commands through Magento, e.g. sampledata:deploy, so copy the
     # credentials over to it to prevent Composer from asking for them again
