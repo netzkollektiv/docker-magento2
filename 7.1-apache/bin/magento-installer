@@ -43,8 +43,6 @@ if [ ! "$M2SETUP_INSTALL_DB" = "false" ]; then
     fi
 
     if [ "$M2SETUP_USE_SAMPLE_DATA" = "true" ]; then
-
-      $MAGENTO_COMMAND sampledata:deploy
       INSTALL_COMMAND="$INSTALL_COMMAND --use-sample-data"
     fi
 
