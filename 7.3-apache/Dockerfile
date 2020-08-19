@@ -91,6 +91,7 @@ RUN composer global require hirak/prestissimo
 
 ADD bin/* /usr/local/bin/
 RUN ["chmod", "+x", "/usr/local/bin/magento-installer", "/usr/local/bin/magento-command", "/usr/local/bin/magerun2", "/usr/local/bin/run-cron", "/usr/local/bin/install"] 
+RUN chsh --shell /bin/sh www-data && chown -R www-data: /var/www
 
 ADD etc/php-apache.ini /usr/local/etc/php/conf.d/zz-magento.ini
 
@@ -117,4 +118,5 @@ ENV M2SETUP_DB_HOST=127.0.0.1 \
 
 RUN [ "install" ]
 
+USER root
 CMD ["apache2-foreground"]
