@@ -2,6 +2,7 @@
 
 [ "$DEBUG" = "true" ] && set -x
 
+
 # Configure composer
 [ ! -z "${COMPOSER_GITHUB_TOKEN}" ] && \
     composer config --global github-oauth.github.com $COMPOSER_GITHUB_TOKEN
@@ -18,7 +19,11 @@ if [ -f "$AUTH_JSON_FILE" ]; then
     COMPOSER_AUTH=`cat $AUTH_JSON_FILE`
 fi
 
-MAGENTO_COMMAND="magento-command"
+# add shell for www-data and switch user
+chsh --shell /bin/bash www-data
+su www-data
+
+MAGENTO_COMMAND=$MAGENTO_ROOT/bin/magento
 
 if [ ! -f "$MAGENTO_ROOT/composer.json" ]; then
     echo "Creating Magento ($M2SETUP_VERSION) project from composer"
@@ -48,5 +53,6 @@ fi
 composer --working-dir=$MAGENTO_ROOT install
 $MAGENTO_COMMAND module:enable --all
 
+exit # exit www-data shell
+
 rm -r /root/.composer/cache # clear composer cache to reduce image size
-chown -R www-data:www-data $MAGENTO_ROOT
