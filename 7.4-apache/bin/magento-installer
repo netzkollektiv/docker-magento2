@@ -20,13 +20,16 @@ if [ ! "$M2SETUP_INSTALL_DB" = "false" ]; then
         --db-host=$M2SETUP_DB_HOST \
         --db-name=$M2SETUP_DB_NAME \
         --db-user=$M2SETUP_DB_USER \
-        --db-password=$M2SETUP_DB_PASSWORD \
         --base-url=$M2SETUP_BASE_URL \
         --admin-firstname=$M2SETUP_ADMIN_FIRSTNAME \
         --admin-lastname=$M2SETUP_ADMIN_LASTNAME \
         --admin-email=$M2SETUP_ADMIN_EMAIL \
         --admin-user=$M2SETUP_ADMIN_USER \
         --admin-password=$M2SETUP_ADMIN_PASSWORD"
+
+    if [ -n "$M2SETUP_DB_PASSWORD" ]; then
+        INSTALL_COMMAND="$INSTALL_COMMAND --db-password=$M2SETUP_DB_PASSWORD"
+    fi
 
     # Use a separate value for secure base URL, if the variable is set
     if [ -n "$M2SETUP_SECURE_BASE_URL" ]; then

@@ -46,6 +46,7 @@ if [ ! -f "$MAGENTO_ROOT/composer.json" ]; then
 	composer --working-dir=$MAGENTO_ROOT update
 fi
 composer --working-dir=$MAGENTO_ROOT install
+$MAGENTO_COMMAND module:enable --all
 
 rm -r /root/.composer/cache # clear composer cache to reduce image size
 chown -R www-data:www-data $MAGENTO_ROOT
