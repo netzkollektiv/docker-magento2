@@ -50,7 +50,8 @@ RUN apt-get update \
   && apt-get install --no-install-recommends -y \
     <?php echo join(" \\ \n    ", $packages) ?> \
   && rm -rf /var/lib/apt/lists/* \
-  && npm install --prefix /usr/local/ cypress
+  && npm install --prefix /usr/local/ cypress \
+  && npm install -g grunt-cli
 
 # Configure the gd library
 <?php if (version_compare($version, '7.3', '<=')): ?>
@@ -73,7 +74,8 @@ RUN docker-php-ext-configure \
   'soap',
   'bcmath',
   'pcntl',
-  'sockets'
+  'sockets',
+  'mysqli'
 ], $imageSpecificPhpExtensions ?? []);
 ?>
 

@@ -33,6 +33,12 @@ before_script:
   tags:
     - docker
 
+build:2.1.17:
+  <<: *build_definition
+  variables:
+    M2SETUP_VERSION: 2.1.17
+    BASE_IMAGE: 5.6-apache
+
 build:2.1.18:
   <<: *build_definition
   variables:

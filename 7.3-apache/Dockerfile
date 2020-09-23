@@ -36,7 +36,8 @@ RUN apt-get update \
     default-mysql-client \ 
     libzip-dev \
   && rm -rf /var/lib/apt/lists/* \
-  && npm install --prefix /usr/local/ cypress
+  && npm install --prefix /usr/local/ cypress \
+  && npm install -g grunt-cli
 
 # Configure the gd library
 RUN docker-php-ext-configure \
@@ -55,7 +56,8 @@ RUN docker-php-ext-install \
   soap \ 
   bcmath \ 
   pcntl \ 
-  sockets
+  sockets \ 
+  mysqli
 
 # Install Xdebug (but don't enable)
 RUN pecl install -o -f xdebug
@@ -91,7 +93,7 @@ RUN composer global require hirak/prestissimo
 
 ADD bin/* /usr/local/bin/
 RUN ["chmod", "+x", "/usr/local/bin/magento-installer", "/usr/local/bin/magento-command", "/usr/local/bin/magerun2", "/usr/local/bin/run-cron", "/usr/local/bin/install"] 
-RUN chsh --shell /bin/sh www-data && chown -R www-data: /var/www
+RUN chsh --shell /bin/bash www-data && chown -R www-data: /var/www
 
 ADD etc/php-apache.ini /usr/local/etc/php/conf.d/zz-magento.ini
 
