@@ -29,7 +29,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/install": {
+      "bin/install-magento": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -69,7 +69,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/install": {
+      "bin/install-magento": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -109,7 +109,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/install": {
+      "bin/install-magento": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -149,7 +149,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/install": {
+      "bin/install-magento": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -189,7 +189,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/install": {
+      "bin/install-magento": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -199,8 +199,8 @@
     "phpExtensions": [],
     "xdebugVersion": "latest"
   },
-  "8.0-apache": {
-    "version": "8.0",
+  "8.1-apache": {
+    "version": "8.1",
     "flavour": "apache",
     "files": {
       "Dockerfile": {},
@@ -229,7 +229,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/install": {
+      "bin/install-magento": {
         "executable": true
       },
       "etc/mail.ini": {},

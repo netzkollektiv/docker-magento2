@@ -52,3 +52,5 @@ fi
 composer --working-dir=$MAGENTO_ROOT install --prefer-dist --no-dev -vvv
 chown -R www-data: /var/www
 $MAGENTO_COMMAND module:enable --all
+
+rm -r ~/.composer/cache # clear composer cache to reduce image size
