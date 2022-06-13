@@ -1,0 +1,124 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/docker-magento2
+
+jobs:
+
+  build-php56-apache:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file php-5.6-apache/Dockerfile --tag ${{ env.IMAGE }}:php-5.6
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Push to Docker Hub
+      run: docker push ${{ env.IMAGE }}:php-5.6
+
+  build-php70-apache:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file php-7.0-apache/Dockerfile --tag ${{ env.IMAGE }}:php-7.0
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Push to Docker Hub
+      run: docker push ${{ env.IMAGE }}:php-7.0
+
+  build-php71-apache:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file php-7.1-apache/Dockerfile --tag ${{ env.IMAGE }}:php-7.1
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Push to Docker Hub
+      run: docker push ${{ env.IMAGE }}:php-7.1
+
+  build-php72-apache:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file php-7.2-apache/Dockerfile --tag ${{ env.IMAGE }}:php-7.2
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Push to Docker Hub
+      run: docker push ${{ env.IMAGE }}:php-7.2
+
+  build-php73-apache:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file php-7.3-apache/Dockerfile --tag ${{ env.IMAGE }}:php-7.3
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Push to Docker Hub
+      run: docker push ${{ env.IMAGE }}:php-7.3
+
+  build-php74-apache:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file php-7.4-apache/Dockerfile --tag ${{ env.IMAGE }}:php-7.4
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Push to Docker Hub
+      run: docker push ${{ env.IMAGE }}:php-7.4
+
+  build-php80-apache:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file php-8.0-apache/Dockerfile --tag ${{ env.IMAGE }}:php-8.0
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Push to Docker Hub
+      run: docker push ${{ env.IMAGE }}:php-8.0

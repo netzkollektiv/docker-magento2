@@ -69,3 +69,9 @@ build:2.4.0:
     M2SETUP_VERSION: 2.4.0
     BASE_IMAGE: 7.4-apache
 
+build:2.4.4:
+  <<: *build_definition
+  variables:
+    M2SETUP_VERSION: 2.4.4
+    BASE_IMAGE: 8.0-apache
+
