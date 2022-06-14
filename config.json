@@ -37,7 +37,8 @@
       "etc/php-xdebug.ini": {}
     },
     "phpExtensions": [ "mcrypt" ],
-    "xdebugVersion": "2.5.5"
+    "xdebugVersion": "2.5.5",
+    "composerVersion": "1"
   },
   "7.0-apache": {
     "version": "7.0",
@@ -77,7 +78,8 @@
       "etc/php-xdebug.ini": {}
     },
     "phpExtensions": [ "mcrypt" ],
-	"xdebugVersion": "2.8.1"
+	"xdebugVersion": "2.8.1",
+    "composerVersion": "1"
   },
   "7.1-apache": {
     "version": "7.1",
@@ -117,7 +119,8 @@
       "etc/php-xdebug.ini": {}
     },
     "phpExtensions": [ "mcrypt" ],
-    "xdebugVersion": "latest"
+    "xdebugVersion": "latest",
+    "composerVersion": "1"
   },
   "7.3-apache": {
     "version": "7.3",
@@ -157,7 +160,8 @@
       "etc/php-xdebug.ini": {}
     },
     "phpExtensions": [],
-    "xdebugVersion": "latest"
+    "xdebugVersion": "latest",
+    "composerVersion": "1"
   },
   "7.4-apache": {
     "version": "7.4",
@@ -197,7 +201,8 @@
       "etc/php-xdebug.ini": {}
     },
     "phpExtensions": [],
-    "xdebugVersion": "latest"
+    "xdebugVersion": "latest",
+    "composerVersion": "1"
   },
   "8.1-apache": {
     "version": "8.1",
@@ -237,6 +242,7 @@
       "etc/php-xdebug.ini": {}
     },
     "phpExtensions": [],
-    "xdebugVersion": "latest"
+    "xdebugVersion": "latest",
+    "composerVersion": "2"
   }
 }

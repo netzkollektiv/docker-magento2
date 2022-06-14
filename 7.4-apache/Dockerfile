@@ -85,8 +85,7 @@ ENV MAGENTO_ROOT /var/www/html
 RUN a2enmod rewrite
 
 # Get composer installed to /usr/local/bin/composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --1
 # Install n98-magerun2.phar and move to /usr/local/bin/
 RUN curl -O https://files.magerun.net/n98-magerun2.phar && chmod +x ./n98-magerun2.phar && mv ./n98-magerun2.phar /usr/local/bin/
 

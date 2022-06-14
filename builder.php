@@ -77,6 +77,7 @@ class Builder2
                     $variables["flavour"] = $config["flavour"];
                     $variables["imageSpecificPhpExtensions"] = $config["phpExtensions"];
                     $variables["xdebugVersion"] = $config["xdebugVersion"];
+                    $variables["composerVersion"] = $config["composerVersion"];
 
                     // Determine whether we should load with the template renderer, or whether we should straight up
                     // just load the file from disk.
