@@ -39,6 +39,7 @@ MAINTAINER Nick Jones <nick@nicksays.co.uk>
         'xauth',
         'xvfb',
         'nodejs',
+        'npm',
         'git',
         'default-mysql-client'
     ], $imageSpecificPackages ?? [], $versionSpecificPackages ?? []);
@@ -46,7 +47,10 @@ MAINTAINER Nick Jones <nick@nicksays.co.uk>
 
 # Install dependencies
 RUN apt-get update \
-  && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+  && apt-get install -y ca-certificates curl gnupg \
+  && mkdir -p /etc/apt/keyrings \
+  && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+  && NODE_MAJOR=20 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
   && apt-get install --no-install-recommends -y \
     <?php echo join(" \\ \n    ", $packages) ?> \
   && rm -rf /var/lib/apt/lists/* \

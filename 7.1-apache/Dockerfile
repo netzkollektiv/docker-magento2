@@ -8,7 +8,10 @@ MAINTAINER Nick Jones <nick@nicksays.co.uk>
 
 # Install dependencies
 RUN apt-get update \
-  && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+  && apt-get install -y ca-certificates curl gnupg \
+  && mkdir -p /etc/apt/keyrings \
+  && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+  && NODE_MAJOR=20 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
   && apt-get install --no-install-recommends -y \
     libfreetype6-dev \ 
     libicu-dev \ 
@@ -32,6 +35,7 @@ RUN apt-get update \
     xauth \ 
     xvfb \ 
     nodejs \ 
+    npm \ 
     git \ 
     default-mysql-client \
   && rm -rf /var/lib/apt/lists/* \
@@ -60,7 +64,7 @@ RUN docker-php-ext-install \
   mcrypt
 
 # Install Xdebug (but don't enable)
-RUN pecl install -o -f xdebug
+RUN pecl install -o -f xdebug-3.0.4
 
 ENV PHP_MEMORY_LIMIT 2G
 ENV PHP_ENABLE_XDEBUG false
@@ -87,10 +91,10 @@ RUN a2enmod rewrite
 ENV COMPOSER_MEMORY_LIMIT -1
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --1
 # Install n98-magerun2.phar and move to /usr/local/bin/
-RUN curl -O https://files.magerun.net/n98-magerun2.phar && chmod +x ./n98-magerun2.phar && mv ./n98-magerun2.phar /usr/local/bin/
+RUN curl -O https://files.magerun.net/n98-magerun2.phar && chmod +x ./n98-magerun2.phar && mv ./n98-magerun2.phar /usr/local/bin/magerun2
 
 ADD bin/* /usr/local/bin/
-RUN ["chmod", "+x", "/usr/local/bin/magento-installer", "/usr/local/bin/magento-command", "/usr/local/bin/magerun2", "/usr/local/bin/run-cron", "/usr/local/bin/install-magento"] 
+#RUN ["chmod", "+x", "/usr/local/bin/magento-installer", "/usr/local/bin/magento-command", "/usr/local/bin/magerun2", "/usr/local/bin/run-cron", "/usr/local/bin/install-magento"] 
 RUN chsh --shell /bin/bash www-data && chown -R www-data: /var/www
 
 ADD etc/php-apache.ini /usr/local/etc/php/conf.d/zz-magento.ini

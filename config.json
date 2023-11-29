@@ -7,17 +7,7 @@
       "docker-entrypoint.sh": {
         "executable": true
       },
-      "bin/mageconfigsync": {
-        "executable": true
-      },
-      "bin/magedbm2": {
-        "executable": true
-      },
       "bin/magento-command": {
-        "executable": true
-      },
-      "bin/magento-extension-installer": {
-        "_disable_variables": true,
         "executable": true
       },
       "bin/magento-installer": {
@@ -29,7 +19,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/install-magento": {
+      "bin/setup-magento": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -48,17 +38,7 @@
       "docker-entrypoint.sh": {
         "executable": true
       },
-      "bin/mageconfigsync": {
-        "executable": true
-      },
-      "bin/magedbm2": {
-        "executable": true
-      },
       "bin/magento-command": {
-        "executable": true
-      },
-      "bin/magento-extension-installer": {
-        "_disable_variables": true,
         "executable": true
       },
       "bin/magento-installer": {
@@ -70,7 +50,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/install-magento": {
+      "bin/setup-magento": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -89,17 +69,7 @@
       "docker-entrypoint.sh": {
         "executable": true
       },
-      "bin/mageconfigsync": {
-        "executable": true
-      },
-      "bin/magedbm2": {
-        "executable": true
-      },
       "bin/magento-command": {
-        "executable": true
-      },
-      "bin/magento-extension-installer": {
-        "_disable_variables": true,
         "executable": true
       },
       "bin/magento-installer": {
@@ -111,7 +81,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/install-magento": {
+      "bin/setup-magento": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -130,17 +100,7 @@
       "docker-entrypoint.sh": {
         "executable": true
       },
-      "bin/mageconfigsync": {
-        "executable": true
-      },
-      "bin/magedbm2": {
-        "executable": true
-      },
       "bin/magento-command": {
-        "executable": true
-      },
-      "bin/magento-extension-installer": {
-        "_disable_variables": true,
         "executable": true
       },
       "bin/magento-installer": {
@@ -152,7 +112,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/install-magento": {
+      "bin/setup-magento": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -160,7 +120,7 @@
       "etc/php-xdebug.ini": {}
     },
     "phpExtensions": [],
-    "xdebugVersion": "latest",
+    "xdebugVersion": "3.1.5",
     "composerVersion": "1"
   },
   "7.4-apache": {
@@ -171,17 +131,7 @@
       "docker-entrypoint.sh": {
         "executable": true
       },
-      "bin/mageconfigsync": {
-        "executable": true
-      },
-      "bin/magedbm2": {
-        "executable": true
-      },
       "bin/magento-command": {
-        "executable": true
-      },
-      "bin/magento-extension-installer": {
-        "_disable_variables": true,
         "executable": true
       },
       "bin/magento-installer": {
@@ -193,7 +143,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/install-magento": {
+      "bin/setup-magento": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -201,7 +151,7 @@
       "etc/php-xdebug.ini": {}
     },
     "phpExtensions": [],
-    "xdebugVersion": "latest",
+    "xdebugVersion": "3.1.5",
     "composerVersion": "1"
   },
   "8.1-apache": {
@@ -212,17 +162,7 @@
       "docker-entrypoint.sh": {
         "executable": true
       },
-      "bin/mageconfigsync": {
-        "executable": true
-      },
-      "bin/magedbm2": {
-        "executable": true
-      },
       "bin/magento-command": {
-        "executable": true
-      },
-      "bin/magento-extension-installer": {
-        "_disable_variables": true,
         "executable": true
       },
       "bin/magento-installer": {
@@ -234,7 +174,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/install-magento": {
+      "bin/setup-magento": {
         "executable": true
       },
       "etc/mail.ini": {},
@@ -253,17 +193,7 @@
       "docker-entrypoint.sh": {
         "executable": true
       },
-      "bin/mageconfigsync": {
-        "executable": true
-      },
-      "bin/magedbm2": {
-        "executable": true
-      },
       "bin/magento-command": {
-        "executable": true
-      },
-      "bin/magento-extension-installer": {
-        "_disable_variables": true,
         "executable": true
       },
       "bin/magento-installer": {
@@ -275,7 +205,7 @@
       "bin/run-cron": {
         "executable": true
       },
-      "bin/install-magento": {
+      "bin/setup-magento": {
         "executable": true
       },
       "etc/mail.ini": {},

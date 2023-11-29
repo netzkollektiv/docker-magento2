@@ -41,5 +41,7 @@ chown www-data:www-data $MAGENTO_ROOT
     echo "Xdebug is enabled"
 
 
+[ -f /entrypoint-hook.sh ] && [ -x /entrypoint-hook.sh ] && /entrypoint-hook.sh
+
 exec "$@"
 

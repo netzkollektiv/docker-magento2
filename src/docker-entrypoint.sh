@@ -75,5 +75,7 @@ service rsyslog start
 
 <?php endif ?>
 
+[ -f /entrypoint-hook.sh ] && [ -x /entrypoint-hook.sh ] && /entrypoint-hook.sh
+
 exec "$@"
 
