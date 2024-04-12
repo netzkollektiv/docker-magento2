@@ -40,7 +40,7 @@ if [ ! -f "$MAGENTO_ROOT/composer.json" ]; then
 		cp $AUTH_JSON_FILE $MAGENTO_ROOT/var/composer_home/auth.json
 	fi
 
-	composer require community-engineering/language-de_de --no-update --prefer-dist -vvv
+	#composer require community-engineering/language-de_de --no-update --prefer-dist -vvv
 
 	chown -R www-data: /var/www
 	if [ "$M2SETUP_USE_SAMPLE_DATA" = "true" ]; then
