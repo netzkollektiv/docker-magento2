@@ -41,7 +41,6 @@ RUN apt-get update \
     libzip-dev \ 
     libonig-dev \
   && rm -rf /var/lib/apt/lists/* \
-  && npm install --prefix /usr/local/ cypress \
   && npm install -g grunt-cli
 
 # Configure the gd library

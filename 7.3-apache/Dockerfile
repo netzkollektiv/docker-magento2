@@ -40,7 +40,6 @@ RUN apt-get update \
     default-mysql-client \ 
     libzip-dev \
   && rm -rf /var/lib/apt/lists/* \
-  && npm install --prefix /usr/local/ cypress \
   && npm install -g grunt-cli
 
 # Configure the gd library
