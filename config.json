@@ -150,7 +150,9 @@
       "etc/php-apache.ini": {},
       "etc/php-xdebug.ini": {}
     },
-    "phpExtensions": [],
+    "phpExtensions": [
+      "ftp"
+    ],
     "xdebugVersion": "latest",
     "composerVersion": "2"
   }

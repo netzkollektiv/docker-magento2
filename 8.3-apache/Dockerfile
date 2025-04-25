@@ -62,7 +62,8 @@ RUN docker-php-ext-install \
   bcmath \ 
   pcntl \ 
   sockets \ 
-  mysqli
+  mysqli \ 
+  ftp
 
 # Install Xdebug (but don't enable)
 RUN pecl install -o -f xdebug
